@@ -1,66 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teachable Machine Image Model</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detecting Model</title>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-  </head>
-  <body>
-    <div>Teachable Machine Image Model</div>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #webcam-container {
+            margin-bottom: 20px;
+        }
+
+        #label-container {
+            width: 200px;
+        }
+
+        .label {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .progress {
+            width: 100%;
+            background: #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: green;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>Image Detecting Model</div>
     <button type="button" onclick="init()">Start</button>
     <div id="webcam-container"></div>
     <div id="label-container"></div>
-
+    
     <script type="text/javascript">
-      const URL = "my_model/";
+        const URL = "./my_model/";
 
-      let model, webcam, labelContainer, maxPredictions;
+        let model, webcam, labelContainer, maxPredictions;
 
-      async function init() {
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
 
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
 
-        const flip = true;
-        webcam = new tmImage.Webcam(200, 200, flip);
-        await webcam.setup();
-        await webcam.play();
-        window.requestAnimationFrame(loop);
+            const flip = true; 
+            webcam = new tmImage.Webcam(200, 200, flip); 
+            await webcam.setup(); 
+            await webcam.play();
+            window.requestAnimationFrame(loop);
 
-        document.getElementById("webcam-container").appendChild(webcam.canvas);
-        labelContainer = document.getElementById("label-container");
-        for (let i = 0; i < maxPredictions; i++) {
-          labelContainer.appendChild(document.createElement("div"));
+            document.getElementById("webcam-container").appendChild(webcam.canvas);
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                const labelDiv = document.createElement("div");
+                labelDiv.className = "label";
+                labelContainer.appendChild(labelDiv);
+            }
         }
-      }
 
-      async function loop() {
-        webcam.update();
-        await predict();
-        window.requestAnimationFrame(loop);
-      }
-
-      async function predict() {
-        const prediction = await model.predict(webcam.canvas);
-        for (let i = 0; i < maxPredictions; i++) {
-          const classPrediction =
-            prediction[i].className +
-            ": " +
-            prediction[i].probability.toFixed(2);
-          labelContainer.childNodes[i].innerHTML = classPrediction;
+        async function loop() {
+            webcam.update(); 
+            await predict();
+            window.requestAnimationFrame(loop);
         }
-      }
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        // WebRTC is supported
-        console.log("WebRTC is supported");
-      } else {
-        // WebRTC is not supported
-        console.error("Your browser does not support WebRTC.");
-      }
+
+        async function predict() {
+            const prediction = await model.predict(webcam.canvas);
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction = prediction[i].className;
+                const probability = Math.round(prediction[i].probability * 100);
+                const labelDiv = labelContainer.childNodes[i];
+
+                labelDiv.innerHTML = `${classPrediction}: ${probability}%`;
+
+                // Create or update the progress bar
+                let progressBar = labelDiv.querySelector('.progress-bar');
+                if (!progressBar) {
+                    const progressDiv = document.createElement('div');
+                    progressDiv.className = 'progress';
+                    progressBar = document.createElement('div');
+                    progressBar.className = 'progress-bar';
+                    progressDiv.appendChild(progressBar);
+                    labelDiv.appendChild(progressDiv);
+                }
+                progressBar.style.width = `${probability}%`;
+            }
+        }
     </script>
-  </body>
+</body>
 </html>

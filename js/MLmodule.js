@@ -7,21 +7,23 @@ let loopRequestId = null;
 async function init() {
   const modelURL = URL + "model.json";
   const metadataURL = URL + "metadata.json";
-  
+
   model = await tmImage.load(modelURL, metadataURL);
   maxPredictions = model.getTotalClasses();
-  
-  const flip = true;
-  webcam = new tmImage.Webcam(400, 285, flip);
-  await webcam.setup();
-  
+
+  const flip = true; 
+  webcam = new tmImage.Webcam(400, 400, flip); 
+  await webcam.setup(); 
+  await webcam.play();
+  window.requestAnimationFrame(loop);
+
+  document.getElementById("webcam-container").appendChild(webcam.canvas);
   labelContainer = document.getElementById("label-container");
   for (let i = 0; i < maxPredictions; i++) {
-    labelContainer.appendChild(document.createElement("div"));
+      const labelDiv = document.createElement("div");
+      labelDiv.className = "label";
+      labelContainer.appendChild(labelDiv);
   }
-
-  // Append the webcam canvas to the container
-  document.getElementById("webcam-container").appendChild(webcam.canvas);
 }
 
 async function start() {
@@ -54,15 +56,24 @@ async function loop() {
 let lastUpdate = 0;
 async function predict() {
   const prediction = await model.predict(webcam.canvas);
-  const now = Date.now();
+  for (let i = 0; i < maxPredictions; i++) {
+      const classPrediction = prediction[i].className;
+      const probability = Math.round(prediction[i].probability * 100);
+      const labelDiv = labelContainer.childNodes[i];
 
-  if (now - lastUpdate > 1000) { // 0.5-second delay
-    for (let i = 0; i < maxPredictions; i++) {
-      const classPrediction =
-        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-      labelContainer.childNodes[i].innerHTML = classPrediction;
-    }
-    lastUpdate = now;
+      labelDiv.innerHTML = `${classPrediction}: ${probability}%`;
+
+      // Create or update the progress bar
+      let progressBar = labelDiv.querySelector('.progress-bar');
+      if (!progressBar) {
+          const progressDiv = document.createElement('div');
+          progressDiv.className = 'progress';
+          progressBar = document.createElement('div');
+          progressBar.className = 'progress-bar';
+          progressDiv.appendChild(progressBar);
+          labelDiv.appendChild(progressDiv);
+      }
+      progressBar.style.width = `${probability}%`;
   }
 }
 
@@ -70,7 +81,7 @@ let button = document.getElementById("aibutton");
 button.style.background = "linear-gradient(to right, purple, blue)";
 let webcamcont = document.getElementById("webcam-container");
 let labelcont = document.getElementById("label-container");
-
+let webcamsection = document.getElementsByClassName("webcamsection")[0];
 document.getElementById("aibutton").addEventListener("click", function() {
   if (isPredicting) {
     stop();
@@ -78,11 +89,13 @@ document.getElementById("aibutton").addEventListener("click", function() {
     button.style.background = "linear-gradient(to right, purple, blue)"; 
     webcamcont.innerHTML = "";
     labelcont.innerHTML = "";
+    webcamsection.classList.add("CameraOff")
   } else {
     init().then(start);
     button.innerHTML = "Stop";
+    webcamsection.classList.remove("CameraOff");
     button.style.background = "linear-gradient(to right, crimson, purple)";
-    button.classList.add("animateBackground");
+ 
   }
 });
 
