@@ -3,13 +3,21 @@ body {
   background-color: #ffffff;
   color: #fff;
   overflow: hidden;
-  background-image: url('images/Rohanb&w.jpg');
+  background-image: url('images/homepagetestphoto.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
   overflow: hidden;
   scrollbar-width: thin;
   scrollbar-color: #787777 rgba(0, 0, 0, 0.5);
+}
+@font-face {
+  font-family: 'CustomFont';
+  src: url('fonts/CustomFont.woff2') format('woff2'),
+       url('fonts/RomanFont.woff') format('woff'),
+       url('fonts/CustomFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .up {
@@ -19,7 +27,12 @@ body {
   height: 110%;
   background-color: rgba(0, 0, 0, 0.6);
 }
-
+.up h2{
+  font-family:"CustomFont", sans-serif; 
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
 .down {
   background-color:   rgb(35 36 51);
   color:rgb(0, 0, 0);
