@@ -1,14 +1,46 @@
+let phsensor, color, turb, methane, alcohol;
 const buttons = document.querySelectorAll('.item-button');
-
+let phSensorDisplay = document.querySelector("#phsensor")
+let turbiditySensorDisplay = document.querySelector("#turbidity")
+let OutputScreen = document.querySelector(".right-stat")
 // Add click event listener to each button
 buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove 'active' class from all buttons
-        buttons.forEach(btn => btn.classList.remove('activate'));
+  button.addEventListener('click', () => {
+      // Remove 'activate' class from all buttons
+      buttons.forEach(btn => btn.classList.remove('activate'));
 
-        // Add 'active' class to the clicked button
-        button.classList.add('activate');
-    });
+      // Add 'activate' class to the clicked button
+      button.classList.add('activate');
+
+      // Log specific value based on button text
+      if (button.textContent.trim() === 'Water') {
+          console.log('You selected Water');
+          if(phsensor < 6.5 || phsensor>8.5)
+          {
+             OutputScreen.innerHTML = "The Water is not drinkable"
+          }
+          else{
+            OutputScreen.innerHTML = "The Water is drinkable"
+          }
+       
+  
+      } else if (button.textContent.trim() === 'Vegetables') {
+          console.log('You selected Vegetables');
+        } else if (button.textContent.trim() === 'Milk') {
+          console.log('You selected Milk');
+          if(phsensor < 6.4 || phsensor>8.5){
+             OutputScreen.innerHTML = "The Milk is Bad"
+          }
+          else
+          {
+            OutputScreen.innerHTML = "The Milk is fresh"
+          }
+      } else if (button.textContent.trim() === 'Fruits') {
+          console.log('You selected Fruits');
+      } else {
+          console.log('Unknown selection');
+      }
+  });
 });
 
 
@@ -16,7 +48,6 @@ buttons.forEach(button => {
 (function() {
   const channelId = '2599999';
   const apiKey = 'SX2MQRH2IHLWECII';
-  let phsensor, color, turb, methane, alcohol;
 
   async function fetchSensorData() {
     const url = `https://blynk.cloud/external/api/getAll?token=J5sf8xbUSsCBJ6Ron8pnFReQvb04G_F8`;

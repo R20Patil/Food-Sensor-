@@ -7,6 +7,10 @@ body {
   overflow: hidden;
   color:white;
 }
+.highindex{
+  z-index: 1050; /* Or any higher value if needed */
+  position: relative; /* Ensure position is not static */
+}
 @font-face {
   font-family: 'CustomFont';
   src: url('fonts/CustomFont.woff2') format('woff2'),
@@ -57,6 +61,7 @@ body {
   overflow-y: auto !important;
   scrollbar-width: thin;
   scrollbar-color: #787777 rgba(0, 0, 0, 0.5);
+  z-index: 1000 !important;
 }
 
 p {
@@ -68,6 +73,7 @@ p {
   justify-content: center;
   align-items: center;
   height: 110%;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -250,48 +256,8 @@ canvas{
   width: 100%;
   height: 100px;
 }
-.button-animation {
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  background-color: grey; /* Default color */
-  transition: background-color 0.5s ease-in-out;
-}
 
-.button-animation-animate::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300%;
-  height: 300%;
-  background: linear-gradient(to right, crimson, purple);
-  transition: width 0.5s ease-in-out, height 0.5s ease-in-out, top 0.5s ease-in-out, left 0.5s ease-in-out;
-  border-radius: 50%;
-  z-index: 0;
-  transform: translate(-50%, -50%);
-}
 
-.button-animation-animate:hover::before {
-  width: 0;
-  height: 0;
-  top: 50%;
-  left: 50%;
-}
-
-.button-animation span {
-  position: relative;
-  z-index: 1;
-}
 
 .item-button{
   border: none;
@@ -451,6 +417,7 @@ canvas{
 .right-stat {
   display: flex;
   flex:1;
+  font-size: 20px;
   border: 2px solid transparent; /* Set border width and style */
   border-image: linear-gradient(to right, purple, blue) 1; /* Apply the gradient */
   color:whitesmoke;
