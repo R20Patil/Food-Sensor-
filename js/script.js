@@ -26,6 +26,13 @@ buttons.forEach(button => {
   
       } else if (button.textContent.trim() === 'Vegetables') {
           console.log('You selected Vegetables');
+          if(alcohol>3000 || methane>2000){
+            OutputScreen.innerHTML = "The vegetable is Bad"
+          }
+          else
+          {
+            OutputScreen.innerHTML = "The vegetable is fresh"
+          }
         } else if (button.textContent.trim() === 'Milk') {
           console.log('You selected Milk');
           if(phsensor < 6.4 || phsensor>8.5){
@@ -37,6 +44,13 @@ buttons.forEach(button => {
           }
       } else if (button.textContent.trim() === 'Fruits') {
           console.log('You selected Fruits');
+          if(alcohol>3000 || methane>2000){
+            OutputScreen.innerHTML = "The fruit is Bad"
+          }
+          else
+          {
+            OutputScreen.innerHTML = "The fruit is fresh"
+          }
       } else {
           console.log('Unknown selection');
       }

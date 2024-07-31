@@ -45,7 +45,11 @@ body {
 .down > p {
   margin-top: 0px;
 }
-
+.down h1{
+  color:white;
+  text-align: center;
+  margin: 10px;
+}
 .navbar {
   color: white !important;
   background-color: rgba(0, 0, 0, 0.6) !important;
@@ -389,7 +393,7 @@ p {
   justify-content: center;
   align-items: center;
   background-color: black;
-  padding: 20px;
+  padding: 60px;
   color:white;
 
 }
@@ -411,7 +415,7 @@ p {
   height: 100%;
   display:flex;
   flex-direction: column;
-  align-items: center;
+
 }
 
 .middle-section {
@@ -469,7 +473,9 @@ p {
     height: 830vh;
     padding: 20px;
   }
-
+  form{
+    flex-direction: column;
+  }
   .frame {
     width: 90%;
     font-size: 24px;
@@ -480,7 +486,7 @@ p {
     width: 150px;
     height: 150px;
   }
-
+  
   h2 {
     font-size: 24px;
   }
@@ -533,19 +539,21 @@ p {
 }
 
 
-footer.downloads {
+.downloads {
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: rgb(35 36 51);
+    color:white;
 }
 
 .downloads-item {
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: rgb(47, 48, 67);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px;
     margin: 10px 0;
+    color:white;
 }
 
 .downloads-item img {
@@ -576,7 +584,7 @@ footer.downloads {
 .description {
     font-size: 0.9em;
     line-height: 1.4;
-    color: #333;
+    color: white;
 }
 
 .btn-success {
