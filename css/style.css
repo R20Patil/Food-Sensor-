@@ -431,6 +431,8 @@ canvas{
 .item-list-container{
   display: flex;
 }
+
+
 /* Media Queries for Smartphones */
 @media (max-width: 600px) {
   body{
