@@ -224,7 +224,8 @@
         </div>
         <h3 style = "color: white;">DOWNLOADS</h3> <!-- Added Title Below Carousel -->
       </div>
-      <footer class="downloads">
+
+      <div class="downloads">
           <div class="downloads-item" data-aos="fade-right">
               <a href="#">
                   <img
@@ -247,7 +248,7 @@
                   </p>
               </div>
           </div>
-      </footer>
+      </div>
 
       <form name="contact" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contact">
@@ -262,6 +263,47 @@
     
         <button type="submit">Submit</button>
     </form>
+
+      
+        <ul>
+          <li>Pamphlet 1<button class = "btn btn-success">
+            Download
+          </button>
+          </li>
+          <li>Pamphlet 2<button class = "btn btn-success">
+            Download
+          </button>
+          </li>
+        </ul>
+        <footer class="footer">
+          <h1>YOUR VALUABLE REVIEW/SUGGESTION</h1>
+          <form name="contact" method="POST" data-netlify="true" class="contact-form">
+            <div class="left-section">
+              <input type="hidden" name="form-name" value="contact">
+              
+              <label for="name">Name:</label><br>
+              <input class = "FullWidth"type="text" id="name" name="name" required><br><br>
+      
+              <label for="surname">Surname:</label><br>
+              <input class = "FullWidth"type="text" id="surname" name="surname" required><br><br>
+      
+              <label for="email">Email:</label><br>
+              <input class = "FullWidth"type="email" id="email" name="email" required><br><br>
+            </div>
+      
+            <div class="middle-section">
+              <label for="review">Review/Suggestions:</label><br>
+              <textarea class = "FullWidth" id="review" name="review" rows="10" cols="30" required></textarea><br><br>
+            </div>
+      
+            <div class="right-section">
+              <button type="submit" class = "submit-button">Submit</button>
+            </div>
+          </form>
+        </footer>
+        
+        
+
     
     </div>
   </div>
