@@ -239,35 +239,36 @@ p {
 
 .slider-wrapper {
   position: relative;
-  width: 1140px;
+  width: 100%;
+  max-width: 1140px; /* Limit max width for large screens */
   margin: 0 auto;
 }
 
 .slider {
   display: flex;
-  aspect-ratio: 16 / 8.2;
+  aspect-ratio: 16 / 8.2; /* Adjust ratio as needed */
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
   border-radius: 0.5rem;
-  -ms-overflow-style: none;
-  /* Hide scrollbar IE and Edge */
-  scrollbar-width: none;
-  /* Hide scrollbar Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar Firefox */
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .slider::-webkit-scrollbar {
-  display: none;
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
 
 .slider img {
-  flex: 1 0 100%;
+  flex: 1 0 100%; /* Full width for each image */
   scroll-snap-align: start;
-  object-fit: cover;
+  object-fit: contain; /* Ensure the entire image is visible */
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
 }
 
+/* Adjust navigation styles if needed */
 .slider-nav {
   display: flex;
   column-gap: 1rem;
@@ -290,6 +291,9 @@ p {
 .slider-nav a:hover {
   opacity: 1;
 }
+
+
+
 
 .social-links {
   width: 100%;
@@ -377,4 +381,103 @@ form{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+
+/* General Mobile Styles */
+@media only screen and (max-width: 600px) {
+  body {
+    background-size: cover;
+    background-position: center;
+    color: #000; /* Adjust text color for better readability on mobile */
+  }
+
+  .up {
+    height: 92vh;
+    padding: 20px;
+  }
+
+  .down {
+    height: 830vh;
+    padding: 20px;
+  }
+
+  .frame {
+    width: 90%;
+    font-size: 24px;
+    padding: 20px;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+  }
+
+  .slider-wrapper {
+    width: 100%;
+  }
+
+  .slider img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .slider-nav {
+    bottom: 0.75rem;
+  }
+
+  .social-links {
+    height: auto;
+    font-size: 18px;
+    margin-top: 5px;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  footer ul {
+    gap: 5px;
+  }
+
+  form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  form input,
+  form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .group-frame {
+    width: 100%;
+    height: auto;
+  }
+
+  .group-pic {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .container-img {
+    padding: 1rem;
+  }
 }
