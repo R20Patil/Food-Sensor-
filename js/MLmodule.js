@@ -1,4 +1,4 @@
-const URL = "my_model/";
+const URL = "./my_model/";
 
 let model, webcam, labelContainer, maxPredictions;
 let isPredicting = false;
@@ -19,10 +19,14 @@ async function init() {
 
   document.getElementById("webcam-container").appendChild(webcam.canvas);
   labelContainer = document.getElementById("label-container");
+
   for (let i = 0; i < maxPredictions; i++) {
       const labelDiv = document.createElement("div");
       labelDiv.className = "label";
-      labelContainer.appendChild(labelDiv);
+    
+        
+        labelContainer.appendChild(labelDiv);
+   
   }
 }
 
@@ -56,7 +60,9 @@ async function loop() {
 let lastUpdate = 0;
 async function predict() {
   const prediction = await model.predict(webcam.canvas);
-  for (let i = 0; i < maxPredictions; i++) {
+
+
+    for (let i = 0; i < maxPredictions; i++) {
       const classPrediction = prediction[i].className;
       const probability = Math.round(prediction[i].probability * 100);
       const labelDiv = labelContainer.childNodes[i];
@@ -66,15 +72,17 @@ async function predict() {
       // Create or update the progress bar
       let progressBar = labelDiv.querySelector('.progress-bar');
       if (!progressBar) {
-          const progressDiv = document.createElement('div');
-          progressDiv.className = 'progress';
-          progressBar = document.createElement('div');
-          progressBar.className = 'progress-bar';
-          progressDiv.appendChild(progressBar);
-          labelDiv.appendChild(progressDiv);
+        const progressDiv = document.createElement('div');
+        progressDiv.className = 'progress';
+        progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        progressDiv.appendChild(progressBar);
+        labelDiv.appendChild(progressDiv);
       }
+
       progressBar.style.width = `${probability}%`;
-  }
+    }
+
 }
 
 let button = document.getElementById("aibutton");
@@ -95,7 +103,6 @@ document.getElementById("aibutton").addEventListener("click", function() {
     button.innerHTML = "Stop";
     webcamsection.classList.remove("CameraOff");
     button.style.background = "linear-gradient(to right, crimson, purple)";
- 
   }
 });
 
