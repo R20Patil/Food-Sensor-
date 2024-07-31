@@ -224,6 +224,46 @@
         </div>
         <h3 style = "color: white;">DOWNLOADS</h3> <!-- Added Title Below Carousel -->
       </div>
+
+      <div class="downloads">
+          <div class="downloads-item" data-aos="fade-right">
+              <a href="#">
+                  <img
+                      src="css/images/pamphlet1.jpg.png"
+                      class="rounded"
+                      alt="phamplet1"
+                      loading="lazy"
+                  />
+              </a>
+              <div class="content-container">
+                  <b class="title">Pamphlet</b>
+                  <div class="design-line"></div>
+                  <p class="description">
+                      Guide for food handling and hygiene
+                      <a href="#" class="btn btn-success">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8 12L12 16M12 16L16 12M12 16V6.8C12 5.40929 12 4.71394 11.4495 3.9354C11.0837 3.41812 10.0306 2.77968 9.40278 2.69462C8.45789 2.5666 8.09907 2.75378 7.38143 3.12814C4.18333 4.79643 2 8.14324 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 8.29859 19.989 5.06687 17 3.33782" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                      </a>
+                  </p>
+              </div>
+          </div>
+      </div>
+
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+    
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required><br><br>
+    
+        <label for="review">Review/Suggestions:</label><br>
+        <textarea id="review" name="review" rows="4" cols="50" required></textarea><br><br>
+    
+        <button type="submit">Submit</button>
+    </form>
+
       
         <ul>
           <li>Pamphlet 1<button class = "btn btn-success">
@@ -263,6 +303,7 @@
         </footer>
         
         
+
     
     </div>
   </div>
