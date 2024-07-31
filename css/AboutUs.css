@@ -3,7 +3,7 @@ body {
   background-color: #ffffff;
   color: #fff;
   overflow: hidden;
-  background-image: url('images/homepagetestphoto.jpg');
+  background-image: url('images/bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
@@ -164,22 +164,39 @@ p {
   background-image: url(images/Rohan.jpg);
   background-size: cover;
 }
-
+.Adveat{
+  background-image:url(images/Adveat.jpg);
+  background-size:cover;
+}
 .Devansh {
   background-image: url(images/Devansh.jpg);
   background-size: cover;
 }
 
 .Arjun {
-  background-image: url(images/Rohan.jpg);
+  background-image: url(images/Arjun.jpg);
   background-size: cover;
+  background-position: center;
 }
 
 .Suyog {
   background-image: url(images/Suyog.jpg);
   background-size: cover;
+  background-position: center;
 }
-
+.Sahil{
+  background-image: url(images/Sahil.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.Siddarth{
+  background-image: url(images/Siddarth.png);
+  background-size: cover;
+}
+.Riya{
+  background-image: url(images/Riya.jpg);
+  background-size: cover;
+}
 .Jeet {
   background-image: url(images/Jeet.jpg);
   background-size: cover;
