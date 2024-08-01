@@ -35,7 +35,7 @@ buttons.forEach(button => {
           }
         } else if (button.textContent.trim() === 'Milk') {
           console.log('You selected Milk');
-          if(phsensor < 6.4 || phsensor>8.5){
+          if(phsensor < 6.4 || phsensor>9.5){
              OutputScreen.innerHTML = "The Milk is Bad"
           }
           else
