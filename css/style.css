@@ -20,7 +20,10 @@ body {
   font-style: normal;
 }
 
-
+.bpw-floating-button {
+  z-index: 9999;
+  position: absolute;
+}
 
 .canelafont{
   font-family: "CustomFont", sans-serif;
