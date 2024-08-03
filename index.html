@@ -35,6 +35,28 @@
       z-index: 9999;
     }
   </style>
+   <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      window.botpressWebChat.init({
+        "composerPlaceholder": "Chat with bot",
+        "botConversationDescription": "I can help you find home remedies to adulteration",
+        "botId": "efe72148-2b30-4648-8d45-2da56ab504a6",
+        "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+        "messagingUrl": "https://messaging.botpress.cloud",
+        "clientId": "efe72148-2b30-4648-8d45-2da56ab504a6",
+        "webhookId": "3ad7b563-17a4-45c1-9223-9175944072db",
+        "lazySocket": true,
+        "themeName": "prism",
+        "stylesheet": "https://webchat-styler-css.botpress.app/prod/41bab3d1-78b5-4c66-884b-03d6782b2a8c/v68076/style.css",
+        "frontendVersion": "v1",
+        "useSessionStorage": true,
+        "theme": "prism",
+        "themeColor": "#2563eb",
+        "allowedOrigins": []
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -267,6 +289,7 @@
       </div>
     </div>
   </div>
+  <div id="botpress-container"></div>
   <svg width="0" height="0" version="1.1" class="gradient-mask" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="gradientGauge">
@@ -279,28 +302,6 @@
     </defs>
   </svg>
   <!-- partial -->
- <div id="botpress-container">
-  <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-  <script>
-  window.botpressWebChat.init({
-      "composerPlaceholder": "Chat with bot",
-      "botConversationDescription": "I can help you find home remedies to adulteration",
-      "botId": "efe72148-2b30-4648-8d45-2da56ab504a6",
-      "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
-      "messagingUrl": "https://messaging.botpress.cloud",
-      "clientId": "efe72148-2b30-4648-8d45-2da56ab504a6",
-      "webhookId": "3ad7b563-17a4-45c1-9223-9175944072db",
-      "lazySocket": true,
-      "themeName": "prism",
-      "stylesheet": "https://webchat-styler-css.botpress.app/prod/41bab3d1-78b5-4c66-884b-03d6782b2a8c/v68076/style.css",
-      "frontendVersion": "v1",
-      "useSessionStorage": true,
-      "theme": "prism",
-      "themeColor": "#2563eb",
-      "allowedOrigins": []
-  });
-</script>
- </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
   <script src="https://cdn3.devexpress.com/jslib/17.1.6/js/dx.all.js"></script>
 
