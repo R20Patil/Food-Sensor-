@@ -1,6 +1,6 @@
-#define BLYNK_TEMPLATE_ID "TMPL3zzs8dRxb"
+#define BLYNK_TEMPLATE_ID "example_ID"
 #define BLYNK_TEMPLATE_NAME "Quickstart Template"
-#define BLYNK_AUTH_TOKEN "J5sf8xbUSsCBJ6Ron8pnFReQvb04G_F8"
+#define BLYNK_AUTH_TOKEN "example_token"
 
 #include "SensorManager.h"
 #include <ColorName.h>
@@ -10,8 +10,8 @@
 #include <EEPROM.h>
 
 const char* ssid = "ampm";
-const char* password = "29122811";
-char auth[] = "J5sf8xbUSsCBJ6Ron8pnFReQvb04G_F8"; // Replace with your Blynk Authentication Token
+const char* password = "type password";
+char auth[] = BLYNK_AUTH_TOKEN; // Replace with your Blynk Authentication Token
 
 BlynkTimer timerr;
 
