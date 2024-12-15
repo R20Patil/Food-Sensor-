@@ -3,6 +3,9 @@ const buttons = document.querySelectorAll('.item-button');
 let phSensorDisplay = document.querySelector("#phsensor")
 let turbiditySensorDisplay = document.querySelector("#turbidity")
 let OutputScreen = document.querySelector(".right-stat")
+const dotenv = require('dotenv')
+dotenv.config({path:`./.env.${process.env.APP_ENV}`});
+
 // Add click event listener to each button
 buttons.forEach(button => {
   button.addEventListener('click', () => {
@@ -60,11 +63,11 @@ buttons.forEach(button => {
 
 
 (function() {
-  const channelId = '2599999';
-  const apiKey = 'SX2MQRH2IHLWECII';
+  const channelId = process.env.CHANNEL_ID;
+  const apiKey = process.env.API_KEY;
 
   async function fetchSensorData() {
-    const url = `https://blynk.cloud/external/api/getAll?token=J5sf8xbUSsCBJ6Ron8pnFReQvb04G_F8`;
+    const url = process.env.URL;
 
     try {
       const response = await fetch(url);
